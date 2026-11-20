@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="homeTitle">Cryptography: learn two ciphers | University Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav class="site-nav" data-i18n-aria="navHome" aria-label="Home and comparison">
+    <a class="active" href="index.html" data-language-link data-i18n="navHome">Home &amp; comparison</a>
+    <a href="vigenere.html" data-language-link data-i18n="navVigenere">Vigenère</a>
+    <a href="aes.html" data-language-link data-i18n="navAes">AES-128</a>
+    <button type="button" class="language-switch" id="language-switch">العربية</button>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow" data-i18n="projectLabel">University project · Cryptography</p>
+    <h1 data-i18n="homeHeading">How do secret messages work?</h1>
+    <p class="lead" data-i18n="homeLead">Learn with two ciphers: an old letter-shifting method and the AES standard used today. Try them, see each step, and compare what makes them different.</p>
+    <p class="authors"><span data-i18n="projectBy">Project by</span> <b data-i18n="teamNames">Kahtan Aldaioub, Kahtan Zaioud, Ali Ismail, and Mohamed Ahmed</b></p>
+  </header>
+
+  <section class="lesson" aria-labelledby="learning-title">
+    <h2 id="learning-title" data-i18n="learningTitle">What you will learn</h2>
+    <ul class="learning-list">
+      <li data-i18n="learningOne">See how a key changes a message into ciphertext.</li>
+      <li data-i18n="learningTwo">Follow Vigenère letter by letter and AES one step at a time.</li>
+      <li data-i18n="learningThree">Explain why an old cipher is easy to break and why real encryption needs careful implementation.</li>
+    </ul>
+  </section>
+
+  <section class="lesson" aria-labelledby="choose-title">
+    <h2 id="choose-title" data-i18n="chooseLesson">Choose a lesson</h2>
+    <div class="lesson-cards">
+      <a class="lesson-card" href="vigenere.html" data-language-link>
+        <span class="card-number">01</span>
+        <h3 data-i18n="vigenereCardTitle">Vigenère cipher</h3>
+        <p data-i18n="vigenereCardText">A classic cipher that shifts each letter using a repeating keyword.</p>
+        <span class="card-link" data-i18n="openLesson">Open lesson</span>
+      </a>
+      <a class="lesson-card" href="aes.html" data-language-link>
+        <span class="card-number">02</span>
+        <h3 data-i18n="aesCardTitle">AES-128</h3>
+        <p data-i18n="aesCardText">A modern standard that transforms data in blocks through ten rounds.</p>
+        <span class="card-link" data-i18n="openLesson">Open lesson</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="compare" aria-labelledby="comparison-title">
+    <h2 id="comparison-title" data-i18n="comparisonTitle">Compare the two</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" data-i18n="comparisonCipher">Cipher</th>
+            <th scope="col" data-i18n="comparisonPeriod">When</th>
+            <th scope="col" data-i18n="comparisonMethod">How it works</th>
+            <th scope="col" data-i18n="comparisonKey">Key idea</th>
+            <th scope="col" data-i18n="comparisonLimit">Learning point</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" data-i18n="vigenereCardTitle">Vigenère cipher</th>
+            <td data-i18n="vigenerePeriod">16th century</td>
+            <td data-i18n="vigenereMethod">Shifts letters one at a time</td>
+            <td data-i18n="vigenereKey">Repeating word</td>
+            <td data-i18n="vigenereLimit">Patterns can reveal the message</td>
+          </tr>
+          <tr>
+            <th scope="row" data-i18n="aesCardTitle">AES-128</th>
+            <td data-i18n="aesPeriod">Modern standard</td>
+            <td data-i18n="aesMethod">Transforms 16-byte blocks in 10 rounds</td>
+            <td data-i18n="aesKey">128-bit key</td>
+            <td data-i18n="aesLimit">Safe use also needs sound key handling and authentication</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <aside class="safety-note">
+    <h2 data-i18n="safetyTitle">Important safety note</h2>
+    <p data-i18n="safetyText">These examples are for learning, not for protecting real messages. Vigenère is breakable. This AES demo uses CBC, which does not detect tampering, and its text key handling is simplified. Use a trusted cryptography library in real applications.</p>
+  </aside>
+</main>
+<script src="i18n.js"></script>
+</body>
+</html>

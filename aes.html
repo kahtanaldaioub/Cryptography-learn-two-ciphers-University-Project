@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="aesPageTitle">AES-128: learn modern encryption | University Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav class="site-nav" data-i18n-aria="navHome" aria-label="Home and comparison">
+    <a href="index.html" data-language-link data-i18n="navHome">Home &amp; comparison</a>
+    <a href="vigenere.html" data-language-link data-i18n="navVigenere">Vigenère</a>
+    <a class="active" href="aes.html" data-language-link data-i18n="navAes">AES-128</a>
+    <button type="button" class="language-switch" id="language-switch">العربية</button>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow" data-i18n="projectLabel">University project · Cryptography</p>
+    <h1 data-i18n="aesPageHeading">AES-128: modern block encryption</h1>
+    <p class="lead" data-i18n="aesPageLead">Explore how AES changes a message in blocks, then step through the first block's ten rounds.</p>
+    <p id="checks" class="checks" aria-live="polite"></p>
+  </header>
+
+  <section class="lesson">
+    <h2 data-i18n="aesIdeaTitle">The idea in one sentence</h2>
+    <p data-i18n="aesIdeaText">AES repeatedly transforms 16 bytes at a time using a secret key, producing ciphertext that looks unrelated to the original message.</p>
+    <h2 data-i18n="aesStepsTitle">What happens when you encrypt?</h2>
+    <ol class="steps">
+      <li><h3 data-i18n="aesStepOneTitle">Turn text into bytes</h3><p data-i18n="aesStepOneText">The message is encoded as bytes, split into 16-byte blocks, and padded if the last block is short.</p></li>
+      <li><h3 data-i18n="aesStepTwoTitle">Start with a random IV</h3><p data-i18n="aesStepTwoText">CBC mode combines each block with the previous ciphertext block before AES encrypts it. The first block uses a random starting value called an IV.</p></li>
+      <li><h3 data-i18n="aesStepThreeTitle">Run ten rounds</h3><p data-i18n="aesStepThreeText">Each round substitutes bytes, shifts rows, mixes columns, and adds a round key. The final round skips the column-mixing step.</p></li>
+      <li><h3 data-i18n="aesStepFourTitle">Return the IV and ciphertext</h3><p data-i18n="aesStepFourText">The result is shown in hexadecimal. It starts with the IV, followed by the encrypted blocks. A fresh IV makes repeated encryptions look different.</p></li>
+    </ol>
+  </section>
+
+  <section class="experiment">
+    <h2 data-i18n="aesTryTitle">Try an experiment</h2>
+    <ul>
+      <li data-i18n="aesTryOne">Encrypt the same message twice with the same key. The hex results should differ because each run gets a new IV.</li>
+      <li data-i18n="aesTryTwo">Use the slider to inspect each step. The highlighted squares show bytes that changed from the previous step.</li>
+    </ul>
+  </section>
+
+  <section class="cipher" aria-labelledby="aes-demo-title">
+    <h2 id="aes-demo-title" data-i18n="aesDemoTitle">Try AES-128</h2>
+    <label for="a-input" data-i18n="aesMessageLabel">Message to encrypt, or hexadecimal ciphertext to decrypt</label>
+    <textarea id="a-input" rows="3" spellcheck="false" dir="auto">Attack at dawn</textarea>
+    <label for="a-key" data-i18n="aesKeyLabel">Text key (demo uses the first 16 bytes)</label>
+    <input id="a-key" type="text" value="my secret key" spellcheck="false" autocomplete="off" dir="auto">
+    <div class="actions">
+      <button type="button" id="a-encrypt" data-i18n="aesEncryptButton">Encrypt to hex</button>
+      <button type="button" id="a-decrypt" data-i18n="aesDecryptButton">Decrypt hex</button>
+      <button type="button" id="a-swap" class="secondary" data-i18n="aesSwap">Use result as input</button>
+    </div>
+    <p id="a-error" class="error" role="alert"></p>
+    <label for="a-output" data-i18n="aesResultLabel">Result</label>
+    <textarea id="a-output" rows="4" readonly dir="ltr"></textarea>
+    <div id="a-trace" hidden>
+      <h3 data-i18n="aesTraceTitle">Watch the first block change</h3>
+      <p class="hint" data-i18n="aesTraceHint">Move the slider to inspect AES rounds. This view starts after the first plaintext block is combined with the IV.</p>
+      <label for="a-step" id="a-step-label" data-i18n="aesInputBlock">Input block</label>
+      <input type="range" id="a-step" min="0" max="0" value="0">
+      <div id="a-state" class="state" role="img" data-i18n-aria="aesStateAria" aria-label="AES state shown as a 4 by 4 grid of hexadecimal bytes" dir="ltr"></div>
+    </div>
+    <details>
+      <summary data-i18n="showSource">Show the source code</summary>
+      <pre><code id="a-code"></code></pre>
+    </details>
+  </section>
+
+  <aside class="safety-note">
+    <h2 data-i18n="aesSafetyTitle">Important limits of this demo</h2>
+    <p data-i18n="aesSafetyText">This educational AES-CBC example does not authenticate data, so it cannot detect tampering. Its text key is simply cut off or zero-padded to 16 bytes; real applications need a password-based key derivation function and authenticated encryption.</p>
+  </aside>
+</main>
+<script src="i18n.js"></script>
+<script src="vigenere.js"></script>
+<script src="aes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

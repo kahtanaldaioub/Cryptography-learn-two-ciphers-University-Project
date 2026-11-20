@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="vigenerePageTitle">Vigenère: learn the classic cipher | University Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <nav class="site-nav" data-i18n-aria="navHome" aria-label="Home and comparison">
+    <a href="index.html" data-language-link data-i18n="navHome">Home &amp; comparison</a>
+    <a class="active" href="vigenere.html" data-language-link data-i18n="navVigenere">Vigenère</a>
+    <a href="aes.html" data-language-link data-i18n="navAes">AES-128</a>
+    <button type="button" class="language-switch" id="language-switch">العربية</button>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow" data-i18n="projectLabel">University project · Cryptography</p>
+    <h1 data-i18n="vigenerePageHeading">Vigenère: shift letters with a key</h1>
+    <p class="lead" data-i18n="vigenerePageLead">A hands-on lesson in a historical cipher. Change the message or keyword and watch each letter move.</p>
+    <p id="checks" class="checks" aria-live="polite"></p>
+  </header>
+
+  <section class="lesson">
+    <h2 data-i18n="vigIdeaTitle">The idea in one sentence</h2>
+    <p data-i18n="vigIdeaText">Each message letter moves forward in the alphabet by an amount chosen by the matching letter of a repeating keyword.</p>
+    <h2 data-i18n="vigStepsTitle">Follow these steps</h2>
+    <ol class="steps">
+      <li><h3 data-i18n="vigStepOneTitle">Choose a message and a key</h3><p data-i18n="vigStepOneText">For example, the message is ATTACK AT DAWN and the key is LEMON.</p></li>
+      <li><h3 data-i18n="vigStepTwoTitle">Repeat the key over the letters</h3><p data-i18n="vigStepTwoText">Ignore spaces when matching letters: ATTACKATDAWN / LEMONLEMONLE.</p></li>
+      <li><h3 data-i18n="vigStepThreeTitle">Turn key letters into shifts</h3><p data-i18n="vigStepThreeText">A means shift 0, B means 1, and so on. L shifts 11 places; E shifts 4.</p></li>
+      <li><h3 data-i18n="vigStepFourTitle">Shift each message letter</h3><p data-i18n="vigStepFourText">The first A shifts by 11 to L. The result is LXFOPVEFRNHR. Spaces and punctuation stay as they are.</p></li>
+    </ol>
+  </section>
+
+  <section class="experiment">
+    <h2 data-i18n="vigTryTitle">Try an experiment</h2>
+    <ul>
+      <li data-i18n="vigTryOne">Encrypt ATTACK AT DAWN with LEMON. Then change the key and compare the result.</li>
+      <li data-i18n="vigTryTwo">Encrypt a message with repeated letters. Do those letters always become the same ciphertext letter?</li>
+    </ul>
+  </section>
+
+  <section class="cipher" aria-labelledby="vig-demo-title">
+    <h2 id="vig-demo-title" data-i18n="vigDemoTitle">Try the cipher</h2>
+    <div class="modes" role="group" data-i18n-aria="vigModeLabel" aria-label="Choose an operation">
+      <button type="button" class="mode" data-mode="encrypt" aria-pressed="true" data-i18n="encrypt">Encrypt</button>
+      <button type="button" class="mode" data-mode="decrypt" aria-pressed="false" data-i18n="decrypt">Decrypt</button>
+    </div>
+    <label for="v-input" data-i18n="vigMessageLabel">Message</label>
+    <textarea id="v-input" rows="3" spellcheck="false" dir="auto">Attack at dawn</textarea>
+    <label for="v-key" data-i18n="vigKeyLabel">Keyword (letters A-Z)</label>
+    <input id="v-key" type="text" value="LEMON" spellcheck="false" autocomplete="off" dir="auto">
+    <p id="v-error" class="error" role="alert"></p>
+    <label for="v-output" data-i18n="vigResultLabel">Result</label>
+    <textarea id="v-output" rows="3" readonly dir="ltr"></textarea>
+    <button type="button" id="v-swap" class="secondary" data-i18n="vigSwap">Use result as the new message</button>
+    <h3 data-i18n="vigTapeTitle">See each letter change</h3>
+    <div id="v-tape" class="tape" data-i18n-aria="vigTapeTitle" aria-label="See each letter change" dir="ltr"></div>
+    <details>
+      <summary data-i18n="showSource">Show the source code</summary>
+      <pre><code id="v-code"></code></pre>
+    </details>
+  </section>
+
+  <aside class="safety-note">
+    <h2 data-i18n="vigWeaknessTitle">Why is it not secure today?</h2>
+    <p data-i18n="vigWeaknessText">The key repeats, so patterns in the message can show up in the ciphertext. Historical methods such as frequency analysis can recover the key and message. Vigenère is useful for learning, but it should not protect real information.</p>
+  </aside>
+</main>
+<script src="i18n.js"></script>
+<script src="vigenere.js"></script>
+<script src="aes.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
